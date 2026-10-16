@@ -20,4 +20,12 @@
     <string name="frmt_tgl">dd/MM/yyyy</string>
     <string name="skill_separator">, </string>
     <string name="skill_none">-</string>
+
+    <string name="hasil">Nama: %1$s %2$s\nEmail: %3$s\nTgl Lahir: %4$s\nPengalaman: %5$s\nSkill: %6$s</string>
+
+    <string name="opsi_pengalaman">
+        <item>Pemula</item>
+        <item>Menengah</item>
+        <item>Ahli</item>
+    </string>
 </resources>
