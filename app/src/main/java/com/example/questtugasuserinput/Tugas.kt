@@ -92,7 +92,17 @@ fun formbiodata(){
                     .height(dimensionResource(R.dimen.header_height))
             )
 
-
+            Surface(modifier = Modifier
+                .fillMaxSize()
+                .padding(top = dimensionResource(R.dimen.form_top_offset)),
+            shape = RoundedCornerShape(
+                topStart = dimensionResource(R.dimen.form_corner_radius),
+                topEnd = dimensionResource(R.dimen.form_corner_radius)
+            ),
+                color = colorResource(R.color.white),
+                shadowElevation = dimensionResource(R.dimen.card_elevator)) {
+                Column { }
+            }
         }
     }
 
