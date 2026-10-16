@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,6 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -131,6 +133,27 @@ fun formbiodata(){
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth()
                     )
+                    Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small)))
+                    {
+                        OutlinedTextField(
+                            value = nama_depan,
+                            onValueChange = {nama_depan = it },
+                            label = {Text(stringResource(R.string.nama_depan))},
+                            singleLine = true,
+                            shape = fieldShapes,
+                            colors = fieldColors,
+                            modifier = Modifier.weight(1f)
+                        )
+                        OutlinedTextField(
+                            value = nama_belakang,
+                            onValueChange = {nama_belakang = it},
+                            label = {Text(stringResource(R.string.nama_belakang))},
+                            singleLine = true,
+                            shape = fieldShapes,
+                            colors = fieldColors,
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
                 }
             }
         }
