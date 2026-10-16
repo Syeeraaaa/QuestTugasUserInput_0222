@@ -78,6 +78,10 @@ fun formbiodata(){
         unfocusedTextColor = colorResource(R.color.text_coklat)
     )
 
-
+    Scaffold(
+        snackbarHost = {SnackbarHost(hostState = snackbarHostState)},
+        containerColor =  colorResource(R.color.form_cream)
+    ) {
+    }
 
 }
