@@ -13,4 +13,6 @@
     <color name="text_coklat">#593b22</color>
     <color name="field_border">#D8C6A7</color>
     <color name="text_hint">#A99A85</color>
+    <color name="kuning_accent">#E3b341</color>
+    <color name="button_disabled">#E6DCC8</color>
 </resources>
