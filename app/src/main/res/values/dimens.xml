@@ -11,4 +11,6 @@
     <dimen name="button_height">52dp</dimen>
     <dimen name="card_elevator">8dp</dimen>
 
+    <integer name="snackbar_durasi">5000</integer>
+
 </resources>
