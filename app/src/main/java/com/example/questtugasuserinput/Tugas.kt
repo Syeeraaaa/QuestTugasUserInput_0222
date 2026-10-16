@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,6 +14,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.DropdownMenu
@@ -26,6 +29,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
@@ -51,6 +55,8 @@ import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone
@@ -251,13 +257,53 @@ fun formbiodata(){
                                         checkmarkColor = colorResource(R.color.text_coklat)
                                     )
                                 )
-
+                                Text(
+                                    text = skill,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = colorResource(R.color.text_coklat)
+                                )
                             }
                         }
+                    }
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
+                    Button(
+                       onClick = {
+                           val skills = if (selectedSkills.isEmpty()) "" else
+                               selectedSkills.joinToString ( skill_separator )
+
+                           val message = resultTemplate.format(
+                               nama_depan,nama_belakang,email,tgl_lahir,pengalaman,skills
+                           )
+                           scope.launch {
+                               snackbarHostState.currentSnackbarData?.dismiss()
+                               val job =launch {
+                                   snackbarHostState.showSnackbar(
+                                       message = message,
+                                       duration = SnackbarDuration.Indefinite
+                                   )
+                               }
+                               delay(snackbarDurationMs)
+                               job.cancel()
+                           }
+                       },
+                        enabled = isFormValid,
+                        shape = fieldShapes,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(R.color.coklat_primary),
+                            contentColor = colorResource(R.color.kuning_accent),
+                            disabledContainerColor = colorResource(R.color.button_disabled),
+                            disabledContentColor = colorResource(R.color.text_hint)
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(dimensionResource(R.dimen.button_height))
+                    ){
+                     Text(stringResource(R.string.btn_proceed))
                     }
                 }
             }
         }
     }
+
 
 }
