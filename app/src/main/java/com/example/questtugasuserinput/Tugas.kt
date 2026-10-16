@@ -1,6 +1,8 @@
 package com.example.questtugasuserinput
 
+import android.icu.util.TimeZone
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -9,6 +11,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @Composable
 fun formbiodata(){
@@ -26,4 +30,11 @@ fun formbiodata(){
     val skillWeb = stringResource(R.string.skill_web)
     val skillOptions = listOf(skillAndroid,skillUiux,skillWeb)
     val selectedSkills = remember { mutableStateListOf<String>() }
+
+
+    var showDatePicker by remember { mutableStateOf(false) }
+    val datePickerState = rememberDatePickerState()
+    val dateFormatter = SimpleDateFormat(stringResource(R.string.frmt_tgl),
+        Locale.getDefault())
+        .apply { timeZone = TimeZone.getTimeZone("UTC") }
 }
