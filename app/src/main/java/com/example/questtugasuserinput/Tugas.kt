@@ -83,6 +83,15 @@ fun formbiodata(){
         containerColor =  colorResource(R.color.form_cream)
     ) { _ ->
         Box(modifier = Modifier.fillMaxSize()){
+            Image(
+                painter = painterResource(R.drawable.bg),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(dimensionResource(R.dimen.header_height))
+            )
+
 
         }
     }
