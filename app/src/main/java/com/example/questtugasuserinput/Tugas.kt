@@ -10,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.integerResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import java.text.SimpleDateFormat
@@ -44,4 +45,10 @@ fun formbiodata(){
 
     val isFormValid = nama_depan.isNotBlank() && nama_belakang.isNotBlank() && email.isNotBlank() && tgl_lahir.isNotBlank() &&
             pengalaman.isNotBlank() && selectedSkills.isNotEmpty()
+
+    val skill_separator = stringResource(R.string.skill_separator)
+    val resultTemplate = stringResource(R.string.hasil)
+    val snackbarDurationMs = integerResource(R.integer.snackbar_durasi).toLong()
+
+
 }
