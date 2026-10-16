@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="form_cream">#F8F0DF</color>
+    <color name="coklat_primary">#76502D</color>
+    <color name="text_coklat">#593b22</color>
+    <color name="field_border">#D8C6A7</color>
+    <color name="text_hint">#A99A85</color>
 </resources>
