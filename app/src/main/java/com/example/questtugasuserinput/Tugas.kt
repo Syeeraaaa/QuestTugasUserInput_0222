@@ -10,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -37,4 +38,10 @@ fun formbiodata(){
     val dateFormatter = SimpleDateFormat(stringResource(R.string.frmt_tgl),
         Locale.getDefault())
         .apply { timeZone = TimeZone.getTimeZone("UTC") }
+
+    var expanded by remember { mutableStateOf(false) }
+    val experienceOptions = stringArrayResource(R.array.opsi_pengalaman)
+
+    val isFormValid = nama_depan.isNotBlank() && nama_belakang.isNotBlank() && email.isNotBlank() && tgl_lahir.isNotBlank() &&
+            pengalaman.isNotBlank() && selectedSkills.isNotEmpty()
 }
