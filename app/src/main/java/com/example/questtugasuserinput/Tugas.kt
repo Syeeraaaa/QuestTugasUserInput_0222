@@ -81,7 +81,10 @@ fun formbiodata(){
     Scaffold(
         snackbarHost = {SnackbarHost(hostState = snackbarHostState)},
         containerColor =  colorResource(R.color.form_cream)
-    ) {
+    ) { _ ->
+        Box(modifier = Modifier.fillMaxSize()){
+
+        }
     }
 
 }
