@@ -17,4 +17,7 @@
 
     <string name="btn_proceed">Proceed</string>
 
+    <string name="frmt_tgl">dd/MM/yyyy</string>
+    <string name="skill_separator">, </string>
+    <string name="skill_none">-</string>
 </resources>
