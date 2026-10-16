@@ -1,6 +1,5 @@
 package com.example.questtugasuserinput
 
-import android.icu.util.TimeZone
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,7 +12,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -33,6 +36,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -45,7 +49,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import java.text.SimpleDateFormat
 import java.util.Locale
+import java.util.TimeZone
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun formbiodata(){
     val snackbarHostState = remember { SnackbarHostState() }
@@ -186,8 +192,38 @@ fun formbiodata(){
                             colors = fieldColors,
                             modifier = Modifier.weight(1f)
                         )
-
+                        ExposedDropdownMenuBox(
+                            expanded = expanded,
+                            onExpandedChange = { expanded = !expanded},
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            OutlinedTextField(
+                                value = pengalaman,
+                                onValueChange = {},
+                                readOnly = true,
+                                label = {Text(stringResource(R.string.Pengalaman))},
+                                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)},
+                                singleLine = true,
+                                shape = fieldShapes,
+                                colors = fieldColors,
+                                modifier = Modifier.menuAnchor()
+                            )
+                            ExposedDropdownMenu(
+                                expanded = expanded,
+                                onDismissRequest = {expanded = false}
+                            ) {
+                                experienceOptions.forEach { option -> DropdownMenuItem(
+                                    text = {Text(option, color = colorResource(R.color.text_coklat)) },
+                                    onClick = {
+                                        pengalaman = option
+                                        expanded = false
+                                    }
+                                )
+                                }
+                            }
+                        }
                     }
+
                 }
             }
         }
