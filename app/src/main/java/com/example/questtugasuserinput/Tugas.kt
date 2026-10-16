@@ -13,6 +13,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -163,6 +166,28 @@ fun formbiodata(){
                         colors = fieldColors,
                         modifier = Modifier.fillMaxWidth()
                     )
+                    Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))){
+                        OutlinedTextField(
+                            value = tgl_lahir,
+                            onValueChange = {},
+                            readOnly = true,
+                            label = {Text(stringResource(R.string.Tgl_lahir))},
+                            trailingIcon = {
+                                IconButton(onClick = {showDatePicker = true}) {
+                                    Icon(
+                                        imageVector = Icons.Default.DateRange,
+                                        contentDescription = stringResource(R.string.desc_calendar_icon),
+                                        tint = colorResource(R.color.coklat_primary)
+                                    )
+                                }
+                            },
+                            singleLine = true,
+                            shape = fieldShapes,
+                            colors = fieldColors,
+                            modifier = Modifier.weight(1f)
+                        )
+
+                    }
                 }
             }
         }
